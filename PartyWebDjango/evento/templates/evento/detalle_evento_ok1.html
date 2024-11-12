@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>{{ evento.nombre }}</title>
+
+        {% load static %}
+
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Roboto:ital,wght@0,100;0,300;1,100&display=swap" rel="stylesheet">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'evento/css/styles.css' %}" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <!--<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+            <div class="container px-5">
+                <a class="navbar-brand" href="#page-top">{{ evento.header_titulo }}</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#!">Sign Up</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">Log In</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>-->
+        <!-- Header-->
+        <header class="masthead text-center text-white" style="background-image: url('{{ evento.header_foto_fondo.url }}'); background-size: cover; background-position: center;">
+            <div class="masthead-content">
+                <div class="container px-5">
+                    <h1 class="masthead-heading mb-0">{{ evento.header_titulo }}</h1>
+                    <h2 class="masthead-subheading mb-0">{{ evento.header_descripcion }}</h2>
+                    <a class="btn btn-primary btn-xl rounded-pill mt-5" href="#scroll">Ver mas</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content section 1-->
+        <section id="scroll">
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <!--<div class="p-5"><img class="img-fluid rounded-circle" src="{{ static 'evento/img/cata01.jpg' %}" alt="..." /></div>-->
+                        <div class="p-5">
+                            {% if evento.imagen_1 %}
+                                <img class="img-fluid rounded-circle" src="{{ evento.imagen_1.url }}" alt="Imagen de la agasajada" />
+                            {% else %}
+                                <img class="img-fluid rounded-circle" src="{% static 'evento/img/default.png' %}" alt="Imagen por defecto" />
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">{{ evento.content1_titulo }}</h2>
+                            <p>{{ evento.fecha }}</p>
+                            <p>{{ evento.content1_lugar }}</p>
+                            <p>{{ evento.content1_direccion_lugar }}</p>
+                            <p>22:00 hs.</p>
+                            <!-- Contenedor del countdown -->
+                            <div id="countdown" class="mt-4 p-3 bg-dark text-white text-center rounded">
+                                <!-- El JavaScript se encargará de mostrar el countdown aquí -->
+                            </div>
+                            <a class="btn btn-primary btn-xl rounded-pill mt-4" href="https://maps.app.goo.gl/hLpXQcRpoc8Lwtkw6" target="_blank">Como llegar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Content section 2-->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'evento/img/02.jpg' %}" alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <h2 class="display-4">Confirma tu asistencia</h2>
+                            <p>Por favor, confirma tu asistencia.</p>
+                            <p>Te espero!</p>
+                            <a class="btn btn-primary btn-xl rounded-pill mt-5" href="#scroll" target="_blank">Confirmar asistencia</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Content section 3-->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'evento/img/01.jpg' %}" alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">Elige la musica que te gusta!</h2>
+                            <p>Ingresá a mi playlist en Spotify y agregá todos los temones que no pueden faltar en la pista!</p>
+                            <a class="btn btn-primary btn-xl rounded-pill mt-5" href="{{ evento.playlist_url }}" target="_blank">Armemos la playlist</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-black">
+            <div class="container px-5"><p class="m-0 text-center text-white small">Copyright &copy; Ariel Ponce 2024</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+
+        <script>
+            // Configuración del Countdown
+            const eventDate = new Date("{{ evento.fecha }}").getTime();  // Obtiene la fecha del evento desde el modelo
+            
+            // Función para actualizar el countdown cada segundo
+            const countdown = setInterval(function() {
+                const now = new Date().getTime();  // Fecha y hora actual en milisegundos
+                const distance = eventDate - now;  // Calcula la diferencia en tiempo
+            
+                // Cálculo de días, horas, minutos y segundos restantes
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+                // Muestra el countdown en el contenedor
+                document.getElementById("countdown").innerHTML = 
+                    `<h3>Solo faltan:</h3> ${days}d ${hours}h ${minutes}m ${seconds}s`;
+            
+                // Si la cuenta regresiva termina, muestra un mensaje
+                if (distance < 0) {
+                    clearInterval(countdown);
+                    document.getElementById("countdown").innerHTML = "<h3>¡El evento ha comenzado!</h3>";
+                }
+            }, 1000);
+            </script>
+    </body>
+</html>
